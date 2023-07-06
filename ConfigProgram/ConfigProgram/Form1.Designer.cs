@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_load = new Button();
             label1 = new Label();
             label2 = new Label();
             comboBox1 = new ComboBox();
@@ -38,17 +37,11 @@
             label4 = new Label();
             btn_save = new Button();
             btn_shortcut = new Button();
+            label5 = new Label();
+            tb_program = new TextBox();
+            btn_search = new Button();
+            btn_newShortcut = new Button();
             SuspendLayout();
-            // 
-            // btn_load
-            // 
-            btn_load.Location = new Point(12, 12);
-            btn_load.Name = "btn_load";
-            btn_load.Size = new Size(75, 23);
-            btn_load.TabIndex = 0;
-            btn_load.Text = "load config";
-            btn_load.UseVisualStyleBackColor = true;
-            btn_load.Click += btn_load_Click;
             // 
             // label1
             // 
@@ -110,11 +103,11 @@
             // 
             // btn_save
             // 
-            btn_save.Location = new Point(12, 41);
+            btn_save.Location = new Point(12, 12);
             btn_save.Name = "btn_save";
-            btn_save.Size = new Size(75, 23);
+            btn_save.Size = new Size(89, 23);
             btn_save.TabIndex = 9;
-            btn_save.Text = "save config";
+            btn_save.Text = "save shortcut";
             btn_save.UseVisualStyleBackColor = true;
             btn_save.Click += btn_save_Click;
             // 
@@ -124,15 +117,55 @@
             btn_shortcut.Name = "btn_shortcut";
             btn_shortcut.Size = new Size(104, 23);
             btn_shortcut.TabIndex = 10;
-            btn_shortcut.Text = "create shortcut";
+            btn_shortcut.Text = "capture shortcut";
             btn_shortcut.UseVisualStyleBackColor = true;
             btn_shortcut.Click += btn_shortcut_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(127, 136);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 15);
+            label5.TabIndex = 12;
+            label5.Text = "Program:";
+            // 
+            // tb_program
+            // 
+            tb_program.Location = new Point(188, 133);
+            tb_program.Name = "tb_program";
+            tb_program.Size = new Size(205, 23);
+            tb_program.TabIndex = 11;
+            // 
+            // btn_search
+            // 
+            btn_search.Location = new Point(402, 133);
+            btn_search.Name = "btn_search";
+            btn_search.Size = new Size(104, 23);
+            btn_search.TabIndex = 13;
+            btn_search.Text = "search";
+            btn_search.UseVisualStyleBackColor = true;
+            btn_search.Click += btn_search_Click;
+            // 
+            // btn_newShortcut
+            // 
+            btn_newShortcut.Location = new Point(12, 41);
+            btn_newShortcut.Name = "btn_newShortcut";
+            btn_newShortcut.Size = new Size(89, 23);
+            btn_newShortcut.TabIndex = 14;
+            btn_newShortcut.Text = "new shortcut";
+            btn_newShortcut.UseVisualStyleBackColor = true;
+            btn_newShortcut.Click += btn_newShortcut_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(518, 147);
+            ClientSize = new Size(518, 177);
+            Controls.Add(btn_newShortcut);
+            Controls.Add(btn_search);
+            Controls.Add(label5);
+            Controls.Add(tb_program);
             Controls.Add(btn_shortcut);
             Controls.Add(btn_save);
             Controls.Add(label4);
@@ -142,7 +175,6 @@
             Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btn_load);
             MaximizeBox = false;
             Name = "Form1";
             Text = "Shortcut Service Config";
@@ -152,8 +184,6 @@
         }
 
         #endregion
-
-        private Button btn_load;
         private Label label1;
         private Label label2;
         private ComboBox comboBox1;
@@ -163,5 +193,9 @@
         private Label label4;
         private Button btn_save;
         private Button btn_shortcut;
+        private Label label5;
+        private TextBox tb_program;
+        private Button btn_search;
+        private Button btn_newShortcut;
     }
 }
