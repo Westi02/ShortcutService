@@ -36,7 +36,7 @@ namespace ConfigProgram
                 }
             }
 
-            if(canSave)
+            if (canSave)
             {
                 foreach (var shortcut in shortcuts.Shortcuts)
                 {
@@ -66,14 +66,14 @@ namespace ConfigProgram
 
             foreach (var shortcut in shortcuts.Shortcuts)
             {
-                if(shortcut.Name == newShortcut.Name)
+                if (shortcut.Name == newShortcut.Name)
                 {
                     canCreateNew = false;
                     MessageBox.Show("You already have a Shortcut with this name", "ERROR", MessageBoxButtons.OK);
                 }
-            }            
+            }
 
-            if(canCreateNew)
+            if (canCreateNew)
             {
                 shortcuts.Shortcuts.Add(newShortcut);
 
@@ -87,7 +87,7 @@ namespace ConfigProgram
                     }
                 }
             }
-            
+
         }
 
         private void btn_shortcut_Click(object sender, EventArgs e)

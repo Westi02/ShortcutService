@@ -161,7 +161,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(518, 177);
+            ClientSize = new Size(518, 168);
             Controls.Add(btn_newShortcut);
             Controls.Add(btn_search);
             Controls.Add(label5);
@@ -176,6 +176,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
+            MaximumSize = new Size(534, 207);
+            MinimumSize = new Size(534, 207);
             Name = "Form1";
             Text = "Shortcut Service Config";
             Load += Form1_Load;

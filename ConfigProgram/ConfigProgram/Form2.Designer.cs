@@ -45,6 +45,7 @@
             cb_Strg.TabIndex = 0;
             cb_Strg.Text = "CTRL";
             cb_Strg.UseVisualStyleBackColor = true;
+            cb_Strg.CheckedChanged += cb_Strg_CheckedChanged;
             // 
             // cb_alt
             // 
@@ -55,10 +56,12 @@
             cb_alt.TabIndex = 1;
             cb_alt.Text = "ALT";
             cb_alt.UseVisualStyleBackColor = true;
+            cb_alt.CheckedChanged += cb_alt_CheckedChanged;
             // 
             // cb_shift
             // 
             cb_shift.AutoSize = true;
+            cb_shift.Enabled = false;
             cb_shift.Location = new Point(122, 44);
             cb_shift.Name = "cb_shift";
             cb_shift.Size = new Size(56, 19);
@@ -110,6 +113,7 @@
             MinimizeBox = false;
             MinimumSize = new Size(343, 114);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Shortcut Creator";
             ResumeLayout(false);
             PerformLayout();
