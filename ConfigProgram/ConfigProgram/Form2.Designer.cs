@@ -115,6 +115,7 @@
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Shortcut Creator";
+            Load += Form2_Load;
             ResumeLayout(false);
             PerformLayout();
         }

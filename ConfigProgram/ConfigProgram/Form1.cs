@@ -132,8 +132,8 @@ namespace ConfigProgram
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "exe files (*.exe)|*.exe|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.Filter = "exe files (*.exe)|*.exe|link files (*.lnk)|*.lnk|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)

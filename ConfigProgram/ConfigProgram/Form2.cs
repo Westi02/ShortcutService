@@ -65,5 +65,10 @@ namespace ConfigProgram
                 cb_shift.Enabled = false;
             }
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
