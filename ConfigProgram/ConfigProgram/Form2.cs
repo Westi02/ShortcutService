@@ -40,32 +40,6 @@ namespace ConfigProgram
 
         }
 
-        private void cb_Strg_CheckedChanged(object sender, EventArgs e)
-        {
-            if(cb_Strg.Checked || cb_alt.Checked)
-            {
-                cb_shift.Enabled = true;
-            }
-            else
-            {
-                cb_shift.Checked = false;
-                cb_shift.Enabled = false;
-            }
-        }
-
-        private void cb_alt_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_Strg.Checked || cb_alt.Checked)
-            {
-                cb_shift.Enabled = true;
-            }
-            else
-            {
-                cb_shift.Checked = false;
-                cb_shift.Enabled = false;
-            }
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
 

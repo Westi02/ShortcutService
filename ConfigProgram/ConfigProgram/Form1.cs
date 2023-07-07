@@ -1,5 +1,8 @@
+using Microsoft.Win32;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.IO;
+using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace ConfigProgram
@@ -9,6 +12,7 @@ namespace ConfigProgram
 
         ShortcutModel shortcuts;
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\shortcut_config.json";
+        string serviceName = "shortcutservice";
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +24,24 @@ namespace ConfigProgram
             var shortcutList = new List<string>();
             loadShortcutsFromFile();
             populateComboBox();
+
+            if(IsUserAdministrator())
+            {
+                cb_Autostart.Enabled = true;
+            }
+            else
+            {
+                cb_Autostart.Enabled = false;
+            }
+
+            if(checkIfAutostartExists())
+            {
+                cb_Autostart.Checked = true;
+            }
+            else
+            {
+                cb_Autostart.Checked = false;
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -51,6 +73,12 @@ namespace ConfigProgram
                 saveShortcutsToFile();
                 loadShortcutsFromFile();
                 populateComboBox();
+                Process[] processes = Process.GetProcessesByName(serviceName);
+                foreach (var process in processes)
+                {
+                    process.Kill();
+                }
+                Process.Start(serviceName + ".exe");
             }
 
         }
@@ -98,7 +126,6 @@ namespace ConfigProgram
 
             var cb_ctrl = (CheckBox)form2.Controls.Find("cb_Strg", true)[0];
             var cb_alt = (CheckBox)form2.Controls.Find("cb_alt", true)[0];
-            var cb_shift = (CheckBox)form2.Controls.Find("cb_shift", true)[0];
             var tb_char = (TextBox)form2.Controls.Find("tb_char", true)[0];
 
 
@@ -113,11 +140,6 @@ namespace ConfigProgram
                 if (cb_alt.Checked)
                 {
                     shortcutString = $"{shortcutString}Alt+";
-                }
-
-                if (cb_shift.Checked)
-                {
-                    shortcutString = $"{shortcutString}Shift+";
                 }
 
                 shortcutString = $"{shortcutString}{tb_char.Text}";
@@ -157,6 +179,23 @@ namespace ConfigProgram
             }
         }
 
+        private void cb_Autostart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (IsUserAdministrator())
+            {
+                if (cb_Autostart.Checked)
+                {
+                    RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    rk.SetValue("ShortcutService", Directory.GetCurrentDirectory() + "\\" + serviceName + ".exe");
+                }
+                else
+                {
+                    RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    rk.DeleteValue("ShortcutService");
+                }
+            }               
+        }
+
         private void loadShortcutsFromFile()
         {
             if (File.Exists(filePath))
@@ -192,6 +231,32 @@ namespace ConfigProgram
             }
 
             this.comboBox1.DataSource = shortcutList;
+        }
+
+        public bool IsUserAdministrator()
+        {
+            bool isAdmin;
+            try
+            {
+                WindowsIdentity user = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(user);
+                isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                isAdmin = false;
+            }
+            catch (Exception ex)
+            {
+                isAdmin = false;
+            }
+            return isAdmin;
+        }
+
+        public static bool checkIfAutostartExists()
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            return (key.GetValueNames().Contains("ShortcutService"));
         }
     }
 }

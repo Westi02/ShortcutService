@@ -41,6 +41,7 @@
             tb_program = new TextBox();
             btn_search = new Button();
             btn_newShortcut = new Button();
+            cb_Autostart = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -157,11 +158,23 @@
             btn_newShortcut.UseVisualStyleBackColor = true;
             btn_newShortcut.Click += btn_newShortcut_Click;
             // 
+            // cb_Autostart
+            // 
+            cb_Autostart.AutoSize = true;
+            cb_Autostart.Location = new Point(12, 177);
+            cb_Autostart.Name = "cb_Autostart";
+            cb_Autostart.Size = new Size(165, 19);
+            cb_Autostart.TabIndex = 15;
+            cb_Autostart.Text = "Autostart Shortcut-Service";
+            cb_Autostart.UseVisualStyleBackColor = true;
+            cb_Autostart.CheckedChanged += cb_Autostart_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(518, 168);
+            ClientSize = new Size(518, 208);
+            Controls.Add(cb_Autostart);
             Controls.Add(btn_newShortcut);
             Controls.Add(btn_search);
             Controls.Add(label5);
@@ -176,8 +189,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
-            MaximumSize = new Size(534, 207);
-            MinimumSize = new Size(534, 207);
+            MaximumSize = new Size(534, 247);
+            MinimumSize = new Size(534, 247);
             Name = "Form1";
             Text = "Shortcut Service Config";
             Load += Form1_Load;
@@ -199,5 +212,6 @@
         private TextBox tb_program;
         private Button btn_search;
         private Button btn_newShortcut;
+        private CheckBox cb_Autostart;
     }
 }
