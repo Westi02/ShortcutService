@@ -7,5 +7,6 @@ public class Shortcut
 {
     public string Name { get; set; }
     public string ShortcutString { get; set; }
+    public string ProgramPath { get; set; }
 }
 
