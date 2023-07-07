@@ -30,7 +30,6 @@
         {
             cb_Strg = new CheckBox();
             cb_alt = new CheckBox();
-            cb_shift = new CheckBox();
             tb_char = new TextBox();
             label1 = new Label();
             btn_close = new Button();
@@ -45,7 +44,6 @@
             cb_Strg.TabIndex = 0;
             cb_Strg.Text = "CTRL";
             cb_Strg.UseVisualStyleBackColor = true;
-            cb_Strg.CheckedChanged += cb_Strg_CheckedChanged;
             // 
             // cb_alt
             // 
@@ -56,18 +54,6 @@
             cb_alt.TabIndex = 1;
             cb_alt.Text = "ALT";
             cb_alt.UseVisualStyleBackColor = true;
-            cb_alt.CheckedChanged += cb_alt_CheckedChanged;
-            // 
-            // cb_shift
-            // 
-            cb_shift.AutoSize = true;
-            cb_shift.Enabled = false;
-            cb_shift.Location = new Point(122, 44);
-            cb_shift.Name = "cb_shift";
-            cb_shift.Size = new Size(56, 19);
-            cb_shift.TabIndex = 2;
-            cb_shift.Text = "SHIFT";
-            cb_shift.UseVisualStyleBackColor = true;
             // 
             // tb_char
             // 
@@ -104,7 +90,6 @@
             Controls.Add(btn_close);
             Controls.Add(label1);
             Controls.Add(tb_char);
-            Controls.Add(cb_shift);
             Controls.Add(cb_alt);
             Controls.Add(cb_Strg);
             Enabled = false;
@@ -124,7 +109,6 @@
 
         private CheckBox cb_Strg;
         private CheckBox cb_alt;
-        private CheckBox cb_shift;
         private TextBox tb_char;
         private Label label1;
         private Button btn_close;
