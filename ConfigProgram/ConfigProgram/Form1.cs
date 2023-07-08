@@ -45,6 +45,12 @@ namespace ConfigProgram
                 cb_Autostart.Enabled = false;
             }
 
+            Process[] processes = Process.GetProcessesByName(serviceName);
+            foreach (var process in processes)
+            {
+                process.Kill();
+            }
+            Process.Start(serviceName + ".exe");
 
         }
 
