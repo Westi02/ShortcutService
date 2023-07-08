@@ -22,5 +22,7 @@ if __name__ == "__main__":
     data = readJson()
     while True:
         for Shortcut in data['Shortcuts']:
-            if keyboard.is_pressed(Shortcut["ShortcutString"]):
-                subprocess.call(Shortcut['ProgramPath'],shell=True)
+            if not Shortcut["ShortcutString"] == "":
+                if keyboard.is_pressed(Shortcut["ShortcutString"]):
+                    if not Shortcut["ProgramPath"] == "":
+                        subprocess.call(Shortcut['ProgramPath'],shell=True)
