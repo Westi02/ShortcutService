@@ -33,6 +33,7 @@
             tb_char = new TextBox();
             label1 = new Label();
             btn_close = new Button();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // cb_Strg
@@ -82,11 +83,23 @@
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click_1;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(12, 69);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(148, 15);
+            linkLabel1.TabIndex = 6;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Windows default shortcuts";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(327, 75);
+            ClientSize = new Size(327, 93);
+            Controls.Add(linkLabel1);
             Controls.Add(btn_close);
             Controls.Add(label1);
             Controls.Add(tb_char);
@@ -94,7 +107,6 @@
             Controls.Add(cb_Strg);
             Enabled = false;
             MaximizeBox = false;
-            MaximumSize = new Size(343, 114);
             MinimizeBox = false;
             MinimumSize = new Size(343, 114);
             Name = "Form2";
@@ -112,5 +124,6 @@
         private TextBox tb_char;
         private Label label1;
         private Button btn_close;
+        private LinkLabel linkLabel1;
     }
 }
