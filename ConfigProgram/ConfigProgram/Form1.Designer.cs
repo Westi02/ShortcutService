@@ -42,6 +42,12 @@
             btn_search = new Button();
             btn_newShortcut = new Button();
             cb_Autostart = new CheckBox();
+            menuStrip1 = new MenuStrip();
+            optionsToolStripMenuItem = new ToolStripMenuItem();
+            stopProcessToolStripMenuItem = new ToolStripMenuItem();
+            startServiceToolStripMenuItem = new ToolStripMenuItem();
+            infoToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -55,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(127, 16);
+            label2.Location = new Point(127, 31);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 2;
@@ -64,7 +70,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(188, 12);
+            comboBox1.Location = new Point(188, 27);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(205, 23);
             comboBox1.TabIndex = 3;
@@ -81,6 +87,7 @@
             // 
             tb_shortcut.Location = new Point(188, 104);
             tb_shortcut.Name = "tb_shortcut";
+            tb_shortcut.ReadOnly = true;
             tb_shortcut.Size = new Size(205, 23);
             tb_shortcut.TabIndex = 6;
             // 
@@ -104,7 +111,7 @@
             // 
             // btn_save
             // 
-            btn_save.Location = new Point(12, 12);
+            btn_save.Location = new Point(12, 27);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(89, 23);
             btn_save.TabIndex = 9;
@@ -135,6 +142,7 @@
             // 
             tb_program.Location = new Point(188, 133);
             tb_program.Name = "tb_program";
+            tb_program.ReadOnly = true;
             tb_program.Size = new Size(205, 23);
             tb_program.TabIndex = 11;
             // 
@@ -150,7 +158,7 @@
             // 
             // btn_newShortcut
             // 
-            btn_newShortcut.Location = new Point(12, 41);
+            btn_newShortcut.Location = new Point(12, 56);
             btn_newShortcut.Name = "btn_newShortcut";
             btn_newShortcut.Size = new Size(89, 23);
             btn_newShortcut.TabIndex = 14;
@@ -168,6 +176,43 @@
             cb_Autostart.Text = "Autostart Shortcut-Service";
             cb_Autostart.UseVisualStyleBackColor = true;
             cb_Autostart.CheckedChanged += cb_Autostart_CheckedChanged;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(518, 24);
+            menuStrip1.TabIndex = 16;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { stopProcessToolStripMenuItem, startServiceToolStripMenuItem, infoToolStripMenuItem });
+            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            optionsToolStripMenuItem.Size = new Size(61, 20);
+            optionsToolStripMenuItem.Text = "Options";
+            // 
+            // stopProcessToolStripMenuItem
+            // 
+            stopProcessToolStripMenuItem.Name = "stopProcessToolStripMenuItem";
+            stopProcessToolStripMenuItem.Size = new Size(180, 22);
+            stopProcessToolStripMenuItem.Text = "Stop Service";
+            stopProcessToolStripMenuItem.Click += stopProcessToolStripMenuItem_Click;
+            // 
+            // startServiceToolStripMenuItem
+            // 
+            startServiceToolStripMenuItem.Name = "startServiceToolStripMenuItem";
+            startServiceToolStripMenuItem.Size = new Size(180, 22);
+            startServiceToolStripMenuItem.Text = "Start Service";
+            startServiceToolStripMenuItem.Click += startServiceToolStripMenuItem_Click;
+            // 
+            // infoToolStripMenuItem
+            // 
+            infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            infoToolStripMenuItem.Size = new Size(180, 22);
+            infoToolStripMenuItem.Text = "Info";
+            infoToolStripMenuItem.Click += infoToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -188,12 +233,16 @@
             Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             MaximumSize = new Size(534, 247);
             MinimumSize = new Size(534, 247);
             Name = "Form1";
             Text = "Shortcut Service Config";
             Load += Form1_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,5 +262,10 @@
         private Button btn_search;
         private Button btn_newShortcut;
         private CheckBox cb_Autostart;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem optionsToolStripMenuItem;
+        private ToolStripMenuItem stopProcessToolStripMenuItem;
+        private ToolStripMenuItem startServiceToolStripMenuItem;
+        private ToolStripMenuItem infoToolStripMenuItem;
     }
 }

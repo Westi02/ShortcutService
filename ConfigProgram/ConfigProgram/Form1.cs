@@ -9,6 +9,8 @@ namespace ConfigProgram
 {
     public partial class Form1 : Form
     {
+        string configVersion = "1.0.0";
+        string backgroundVersion = "1.0.0";
 
         ShortcutModel shortcuts;
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\shortcut_config.json";
@@ -25,23 +27,31 @@ namespace ConfigProgram
             loadShortcutsFromFile();
             populateComboBox();
 
-            if(IsUserAdministrator())
+            if (IsUserAdministrator())
             {
                 cb_Autostart.Enabled = true;
+
+                if (checkIfAutostartExists())
+                {
+                    cb_Autostart.Checked = true;
+                }
+                else
+                {
+                    cb_Autostart.Checked = false;
+                }
             }
             else
             {
                 cb_Autostart.Enabled = false;
             }
 
-            if(checkIfAutostartExists())
+            Process[] processes = Process.GetProcessesByName(serviceName);
+            foreach (var process in processes)
             {
-                cb_Autostart.Checked = true;
+                process.Kill();
             }
-            else
-            {
-                cb_Autostart.Checked = false;
-            }
+            Process.Start(serviceName + ".exe");
+
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -193,9 +203,33 @@ namespace ConfigProgram
                     RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                     rk.DeleteValue("ShortcutService");
                 }
-            }               
+            }
         }
 
+        private void stopProcessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process[] processes = Process.GetProcessesByName(serviceName);
+            foreach (var process in processes)
+            {
+                process.Kill();
+            }
+        }
+
+        private void startServiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process[] processes = Process.GetProcessesByName(serviceName);
+            foreach (var process in processes)
+            {
+                process.Kill();
+            }
+            Process.Start(serviceName + ".exe");
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Developer:\tFlorian Westphal\n\t\tLucas Baaske\n\nVersions:\n\tConfig-Program:\t\t{configVersion}\n\tBackground Service:\t{backgroundVersion}", "INFO", MessageBoxButtons.OK);
+        }
+        
         private void loadShortcutsFromFile()
         {
             if (File.Exists(filePath))
@@ -258,5 +292,7 @@ namespace ConfigProgram
             RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
             return (key.GetValueNames().Contains("ShortcutService"));
         }
+
+        
     }
 }
