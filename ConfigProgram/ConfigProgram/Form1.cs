@@ -10,7 +10,7 @@ namespace ConfigProgram
     public partial class Form1 : Form
     {
         string configVersion = "1.0.0";
-        string backgroundVersion = "1.0.0";
+        string backgroundVersion = "1.0.1";
 
         ShortcutModel shortcuts;
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\shortcut_config.json";
